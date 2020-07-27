@@ -212,13 +212,53 @@ int main() {
 				--> No of slots on Hash Table >= No. of keys to be inserted
 				--> Cache friendly
 
-				0
-				1							50, 51, 49, 16, 56, 15, 19
-				2
+				0   49
+				1	50						50, 51, 49, 16, 56, 15, 19
+				2	51						hash(key) = key % 7
+				3   16
+				4	56						Linear probing: Linearly search for
+				5	15						the empty slot when there is a collision
+				6	19
+
+
+				0	42						48, 42, 50, 55, 53
+				1	50						hash(key) = key % 7
+				2	55
 				3
-				4
+				4	53
 				5
+				6	48
+
+			--> How to handle deletions in open addressing ?
+
+				0
+				1	50						insert(50), insert(51), insert(15),
+				2	51						search(15), search(64), delete(15),
+				3	15						search(15)
+				4
+				5							hash(key) = key % 7
 				6
+								search: we compute hash function
+										we go to that index and compare
+										if we find, we return true. Otherwise
+										we do linearly search.
+										we stop in three cases :
+											1. Empty slot
+											2. key found
+											3. traverse through the whole table
+
+					problem with simply making the slot empty when we delete -
+						search will stop when we see a empty slot
+						so we mark that slot as deleted and donot stop while searching
+
+				Clustering (A problem with linear probing)
+
+				How do we handle clustering problem with linear probing ?
+					1. Quadratic Probing (Secondary Clusters)
+						hash(key, i) = (h(key) + i^i) % m
+
+					2. Double Hashing
+						hash(key, i) = (h1(key) + i*h2(key)) % m
 
 
 
