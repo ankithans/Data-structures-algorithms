@@ -261,6 +261,160 @@ int main() {
 						hash(key, i) = (h1(key) + i*h2(key)) % m
 
 
+				Double Hashing :- hash(key, i) = (h1(key) + i*h2(key)) % m
+						1. if h2(key) is relatively prime to m, then it always
+							find a free slot if there is one.
+						2. Distributes keys more uniformly than linear probing
+							and quadratic hashing.
+						3. No Clustering
+
+										hash(key, i) = (h1(key) + i*h2(key)) % m
+													 =  (0 + 1 * 3) % 7 = 3
+					49, 63, 56, 52, 54, 48			 =  (0 + 1 * 4) % 7 = 4
+													 =  (3 + 1 * 2) % 7	= 5
+													 =  (5 + 1 * 6) % 7 = 4 --> (5 + 2 * 6) % 7 = 3 --> (5 + 3 * 6) % 7 = 2
+
+						0	49					m = 7
+						1					h1(key) = key % 7
+						2	54				h2(key) = 6 - (key % 6)
+						3	63						= 6 - (63 % 6)
+						4	56						= 6 - 3
+						5	52						= 3
+						6	48
+													= 6 - (56 % 6)
+													= 6 - 2 = 4
+
+													= 6 - (52 % 6)
+													= 6 - 4 = 2
+
+													= 6 - (54 % 6)
+													= 6 - 0 = 6
+
+
+
+					Why h2(key) and m should be relatively prime ?
+						(1 * 6) % 7 = 6
+						(2 * 6) % 7 = 5
+						(3 * 6) % 7 = 4		this will give all the available slots
+						(4 * 6) % 7 = 3		u can try with 4, 7
+						(5 * 6) % 7 = 2
+						(6 * 6) % 7 = 1
+
+
+			void doubleHashingInser(key) {
+				if(table is full)
+					return error;
+
+				probe = h1(key), offset = h2(key); // linear probing offset = 1
+				while(table[probe] is occupied)
+					probe = (probe + offset) % m;
+				table[prob] = key;
+			}
+
+			Performance Analysis of Search : (Unsuccessfull)
+				α = n/m (should be <= 1)
+				Asumption: Every probe sequence looks at a random location
+
+					(1 - α) Fraction of the Table is empty
+					Expected No of probes required = 1(/1-α)
+							α = 0.8, 5
+							α = 0.9, 10
+
+
+		=> Implementation of Open Addressing:
+
+			MyHash mh(7);
+			mh.insert(45);
+			mh.insert(56);					45 56 72 -1 -1 -1 -1
+			mh.insert(72);					0   1  2  3  4  5  6
+			if(mh.search(56) == true)
+				print("Yes");				erase(56)
+			else							45 -2 72 -1 -1 -1 -1
+				print("No");				0  	1  2  3  4  5  6
+			mh.erase(56);
+			if(mh.search(56) == true)
+				print("yes");
+			else
+				print("No");
+
+
+			struct MyHash {
+				int *arr;
+				int cap, size;
+				MtHash(int c) {
+					cap = c;
+					size = 0;
+					for(int i = 0; i < cap; i ++)
+						arr[i] = -1;
+				}
+				int hash(int key) {
+					return key % cap;
+				}
+
+				bool search(int key) {
+					int h = hash(key);
+					int i = h;
+					while(arr[i] != -1) {
+						if(arr[i] == key)
+							return true;
+						i = (i + 1) % cap;
+						if (i == h)
+							return false;
+					}
+					return false;
+				}
+
+				bool insert(int key) {
+					if(size == cap)
+						return false;
+					int i = hash(key);
+					while(arr[i] != -1 && arr[i] != -2 && arr[i] != key)
+						i = (i + 1) % cap;
+					if(arr[i] == key)
+						return false;
+					else {
+						arr[i] = key;
+						size ++;
+						return true;
+					}
+				}
+
+				bool erase(int key) {
+					int h = hash(key);
+					int i = h;
+					while(arr[i] != -1) {
+						if(arr[i] == key) {
+							arr[i] = -2;
+							return true;
+						}
+						i = (i + 1) % cap;
+						if(l == h)
+							return false;
+					}
+					return false;
+				}
+
+			}
+
+			=> How to handle the cases when -1 and -2 are input keys ?
+				in libraries we dont use actual keys to store at the slots,
+				we use pointers or references. empty - null
+
+				create a dummy node
+				when you delete you store a pointer to this dummy node.
+				its a fixed node.
+
+
+
+		Chaining   							Open Addressing
+		1. Hash Table never fills			1. Table may become full and resizing
+												becomes mandatory.
+		2. Less Sensitive to Hash			2. Extra case requires for clustering
+		3. Poor cache Performance 			3. Cache friendly
+		4. Extra space for links			4. Extra space might be needed to achieve
+			1 + α 								same performance as chaining
+			1 + 0.9 = 1.9							1/(1 - α)
+													1/1-0.9 = 10
 
 
 */
