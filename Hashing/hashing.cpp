@@ -13,11 +13,11 @@ void inputOutput() {
 int main() {
 	inputOutput();
 
-	unordered_set<int> s;
-	s.insert(10);
-	s.insert(5);
-	s.insert(15);
-	s.insert(20);
+	// unordered_set<int> s;
+	// s.insert(10);
+	// s.insert(5);
+	// s.insert(15);
+	// s.insert(20);
 
 	// for (int x : s)
 	// 	cout << x << " ";
@@ -61,6 +61,43 @@ int main() {
 	// Search
 	// Insert
 	// Delete
+
+
+	// unordered_map
+	// used to store key, value pairs
+	// uses hashing
+	// No order of keys
+
+	unordered_map<string, int> m;
+	m["gfg"] = 20;
+	m["ide"] = 30;
+	m.insert({"courses", 15});
+
+	// for (auto x : m)
+	// 	cout << x.first << " " << x.second << endl;
+
+	// if (m.find("ide") != m.end())
+	// 	cout << "Found \n";
+	// else
+	// 	cout << "Not Found \n";
+
+	// for (auto it = m.begin(); it != m.end(); it++)
+	// 	cout << (it->first) << " " << (it->second) << endl;
+
+
+	// if (m.count("ide") == 1)
+	// 	cout << "Found";
+	// else
+	// 	cout << "Not Found";
+
+	// cout << m.size() << " ";
+	// m.erase("ide");
+	// m.erase(m.begin(), m.end());
+	// cout << m.size() << " ";
+
+	// begin(), end(), size(), empty() - O(1) in worst case
+	// count(), find(), [], at, erase(key), insert() - O(1) on avg
+
 
 
 
