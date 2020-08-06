@@ -13,7 +13,7 @@ void inputOutput() {
 int main() {
 	inputOutput();
 
-
+	cout << "hello";
 
 	return 0;
 
@@ -28,4 +28,7 @@ int main() {
 	[2, 3, 4, 5]	14
 	[2, 3, 5]		10
 	14 - 10 is the element
+
+	or take xor ^
+
 */

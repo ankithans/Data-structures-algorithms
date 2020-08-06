@@ -47,21 +47,7 @@ bool anagram_second(string s1, string s2) {
 	return true;
 }
 
-int minNumberAdded(string s1, string s2 ) {
-	// if (s1.length() != s2.length())
-	// 	return false;
-	int res = 0;
-	int count[256] = {0};
-	for (int i = 0; i < s1.length(); i ++)
-		count[s1[i]] ++;
-	for (int i = 0; i < s2.length(); i ++)
-		count[s2[i]] --;
 
-	for (int i = 0; i < 256; i ++)
-		res += abs(count[i]);
-
-	return res;
-}
 
 
 int main() {

@@ -42,7 +42,7 @@ bool isAnagramPresent(string txt, string pat) {
 int main() {
 	inputOutput();
 
-	cout << isAnagramPresent("geeksforgeeks", "eekg");
+	cout << isAnagramPresent("iamredoc", "coder");
 
 	return 0;
 

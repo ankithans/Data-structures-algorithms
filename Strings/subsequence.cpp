@@ -27,7 +27,7 @@ bool isSubSequence(string s1, string s2) {
 int main() {
 	inputOutput();
 
-	cout << isSubSequence("abcd", "adc");
+	cout << isSubSequence("abcd", "cb");
 
 
 	return 0;

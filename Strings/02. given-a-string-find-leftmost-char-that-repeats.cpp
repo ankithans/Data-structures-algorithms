@@ -54,6 +54,9 @@ int leftmostRepeating_third(string str) {
 	return (res == INT_MAX) ? -1 : res;
 }
 
+// more efficient than above
+// as we are travelling from right tp left so
+// we don't need to
 int leftmostRepeating_fourth(string str) {
 	int res = INT_MAX;
 	int fI[256];
@@ -129,7 +132,6 @@ int main() {
 	r 114
 	s 115
 	t 116
-
 
 
 */
