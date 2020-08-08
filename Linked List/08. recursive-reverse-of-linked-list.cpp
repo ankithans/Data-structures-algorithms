@@ -81,9 +81,9 @@ int main() {
 
 		traverse the linked list from left to right
 
-		x1 -> x2 -> x3 ........ -> xi-1 -> xi -> xi+1 -> xn
+		x1 -> x2 -> x3 ........ -> xi-1 -> xi -> xi+1 .... -> xn
 
-		x1 <- x2 <- x3 ........ <- xi-1    xi -> xi+1 -> xn
+		x1 <- x2 <- x3 ........ <- xi-1    xi -> xi+1 .... -> xn
 									prev  curr
 										  prev 	  curr
 
