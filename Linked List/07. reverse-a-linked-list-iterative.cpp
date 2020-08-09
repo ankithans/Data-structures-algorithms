@@ -42,8 +42,8 @@ Node *revList(Node *head)
 // Time O(n)
 Node *reverse(Node *head)
 {
-	Node *curr = head;
-	Node *prev = NULL;
+
+	Node *prev = NULL; Node *curr = head;
 	while (curr != NULL)
 	{
 		Node *next = curr -> next;
@@ -85,15 +85,15 @@ int main() {
 			p = NULL
 
 	2.     NULL <- 10    20 -> 30
-			 	 p    n
-			 	      c
+			 	 	p    n
+			 	      	 c
 
 	3.     NULL <- 10 <- 20    30
-					  p		n
-					  		c
+						  p		n
+						  		c
 
 	4.     NULL <- 10 <- 20 <- 30	n = NULL
-							p 	c = NULL
+								p 	c = NULL
 
 							return p as head
 

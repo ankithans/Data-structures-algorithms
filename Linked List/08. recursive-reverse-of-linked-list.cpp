@@ -20,6 +20,25 @@ struct Node {
 };
 
 
+Node *head1;
+// Nitesh
+// returns tail of reversed linked list
+Node *recursiveReverse_Third(Node *node)
+{
+	if (node == NULL)
+		return NULL;
+	if (node -> next == NULL)
+	{
+		head1 = node;
+		return node;
+	}
+	Node *temp = recursiveReverse_Third(node -> next);
+	temp -> next = node;
+	node -> next = NULL;
+	return node;
+}
+
+
 // Recursive Method 1
 Node *recursiveReverse(Node *head)
 {

@@ -9,6 +9,7 @@ void inputOutput() {
 #endif
 }
 
+
 struct Node {
 	int key;
 	Node *next; // self refrential structure as it has a pointer of self type

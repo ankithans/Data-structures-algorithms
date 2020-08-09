@@ -19,7 +19,7 @@ int fun(int n) {
 int main() {
 	inputOutput();
 
-
+	cout << fun(3);
 
 	return 0;
 
