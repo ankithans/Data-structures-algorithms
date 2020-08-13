@@ -45,7 +45,7 @@ void printMiddle(Node *head)
 	Node *slow = head, *fast = head;
 
 	// handelling cases for odd and even number of elements
-	while (fast != Null && fast -> next != NULL)
+	while (fast != NULL && fast -> next != NULL)
 	{
 		slow = slow -> next;
 		fast = fast -> next -> next;

@@ -13,6 +13,8 @@ void inputOutput() {
 int main() {
 	inputOutput();
 
+	cout << "abc";
+
 
 	return 0;
 
