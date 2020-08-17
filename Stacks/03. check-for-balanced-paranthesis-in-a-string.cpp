@@ -16,6 +16,8 @@ bool matching(char a, char b)
 	        (a == '[' && b == ']'));
 }
 
+
+// Time O(n)
 bool isBalanced(string str)
 {
 	stack<int> s;
@@ -34,6 +36,18 @@ bool isBalanced(string str)
 	}
 	return (s.empty() == true);
 }
+/*
+	Traverse throught the array
+
+	if opening brack: push in the stack
+
+	if closing brack: check if top of the stack is
+	corresponding opening bracket
+
+	at the end stack size should be 0
+*/
+
+
 
 int main() {
 	inputOutput();

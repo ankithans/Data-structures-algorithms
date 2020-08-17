@@ -46,6 +46,17 @@ void printPrevGreater_second(int arr[], int n)
 		s.push(arr[i]);
 	}
 }
+/*
+	1. create a stack
+	2. traverse in the array
+		a. till ur stack is not empty and s.top >= curr
+			s.pop()
+		b. s.empty() == true
+			print(-1)
+		c. s.empty() == false
+			print(top of stack)
+		d. s.push(currele)
+*/
 
 
 int main() {
