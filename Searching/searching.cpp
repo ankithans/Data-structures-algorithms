@@ -12,7 +12,7 @@ void inputOutput() {
 int binarySearch(int arr[], int l, int h, int x) {
 	if (l > h)
 		return -1;
-	int mid = (l + h) / 2;
+	int mid = (l + h) / 2;  // mid = l + (h - l)/2
 	if (arr[mid] == x)
 		return mid;
 	if (arr[mid] > x)
@@ -67,21 +67,23 @@ int countOccurences(int arr[], int l, int h, int x, int n) {
 		return (rightMostIndexElement - leftMostIndexElement + 1);
 }
 
+
+// O(logi)
 int findInInfiniteArray(int arr[], int x) {
 	if (arr[0] == x)
 		return 0;
 	int i = 1;
-	while (arr[i] < x) {
+	while (arr[i] < x)
 		i = i * 2;
-		if (arr[i] == x)
-			return i;
-		else
-			return binarySearch(arr, i / 2, i, x);
-	}
+	if (arr[i] == x)
+		return i;
+	else
+		return binarySearch(arr, i / 2, i, x);
+
 }
 
 int findPivot(int arr[], int l, int h) {
-	if (l < h)
+	if (h < l)
 		return -1;
 	if (l == h)
 		return l;
@@ -92,8 +94,59 @@ int findPivot(int arr[], int l, int h) {
 	if (mid > l && arr[mid] < arr[mid - 1])
 		return mid - 1;
 	if (arr[l] >= arr[mid])
-		return findPivot(arr, mid + 1, h);
+		return findPivot(arr, l, mid - 1);
+	return findPivot(arr, mid + 1, h);
 }
+
+int pivotedBinarySearch(int arr[], int n, int key)
+{
+	int pivot = findPivot(arr, 0, n - 1);
+
+	// we dont find an rotation
+	if (pivot == -1)
+		return binarySearch(arr, 0, n - 1, key);
+
+	if (arr[pivot] == key)
+		return pivot;
+
+	if (arr[0] <= key)
+		return binarySearch(arr, 0, pivot - 1, key);
+	return binarySearch(arr, pivot + 1, n - 1, key);
+}
+
+
+int findPeakUtil(int arr[], int l, int h, int n)
+{
+	int mid = (l + h) / 2;
+	if ((mid == 0 || arr[mid - 1] <= arr[mid]) &&
+	        mid == n - 1 || arr[mid + 1] <= arr[mid])
+		return mid;
+
+	else if (mid > 0 && arr[mid - 1] > arr[mid])
+		return findPeakUtil(arr, l, mid - 1, n);
+
+	else return findPeakUtil(arr, mid + 1, h, n);
+}
+
+// if a func is monotonically increasing then we can apply binary search there
+int squareRoot(int x)
+{
+	if (x == 0 || x == 1)
+		return x;
+
+	int start = 1, end = x, ans;
+	while (start <= end)
+	{
+		int mid = (start + end) / 2;
+		if (mid * mid == x)
+			return mid;
+		if (mid * mid < x)
+		{ start = mid + 1; ans = mid; }
+		else
+			end = mid - 1;
+	}
+}
+
 
 
 int main() {
@@ -276,4 +329,31 @@ int main() {
 			{ 10, 20 ,30, 40, 50, 60, 1 } here 40>10 so pivot is b/w 40 to 1
 
 
+		--> Peak Element : Not smaller than neighbours
+
+			I/p: arr[] = { 5, 10, 20, 15, 7 }
+			O/p: 20
+
+			I/p: arr[] = { 10, 20, 15, 5, 23, 90, 67 }
+			O/p: 20 or 90
+
+			1. if middle element is not smaller than neighbours then middle
+				is peak
+			2. if left neighbours is greater, then a peak lies in left half.
+				else peak lies in right half.
+
+
+
+		--> Square root : If i/p is not perfect sqaure, return floor of
+							sqaure root.
+
+			I/p: x = 4
+			O/p: 2
+
+			I/p: x = 12
+			O/p: 3
+
+			// simple sol  time : root(x)
+			run a loop for i = 1; i*i <= x; i ++
+			when we come out of the loop i - 1 is our sq root
 */
