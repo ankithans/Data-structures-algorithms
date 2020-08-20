@@ -50,6 +50,13 @@ void mergeSort(int arr[], int l, int r)
 	}
 }
 
+
+// elements from l to m are sorted
+// elements form m to h are sorted
+// we need to merge the both parts of array
+// l <= m < h
+// time : O(n1 + n2) = O(n)
+// spce : O(n)
 void merge(int a[], int l, int m, int h)
 {
 	int n1 = m - l + 1, n2 = r - m;
@@ -60,6 +67,17 @@ void merge(int a[], int l, int m, int h)
 		right[j] = arr[m + 1 + j];
 
 	int i = 0, j = 0, k = l;
+	while (i < n1 && j < n2)
+	{
+		if (left[i] <= right[j])
+			arr[k ++] = left[i ++];
+		else
+			arr[k++] = right[j ++];
+	}
+	while (i < n1)
+		arr[k ++] = left[i ++];
+	while (j < n2)
+		arr[k ++] = right[j ++];
 }
 
 

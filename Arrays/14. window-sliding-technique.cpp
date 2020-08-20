@@ -17,7 +17,7 @@ for (int i = 0; i + k - 1 < n; i ++)
 {
 	int sum = 0;
 	for (int j = 0; j < k; j ++)
-		sum += arr[i + 1];
+		sum += arr[i + j];
 	max_sum = max(sum, max_sum);
 }
 return max_sum;
