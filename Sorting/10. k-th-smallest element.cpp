@@ -18,19 +18,21 @@ int kthSmallest(int arr[], int n, int k)
 	return arr[k - 1];
 }
 
-// optimized solution
+// Quick Select algorithm
+// optimized solution - changes your array
+// worst case time : O(n^2) but this works much better on avg
 int kthSmallest(int arr[], int n, int k)
 {
 	int l = 0, r = n - 1;
 	while (l <= r)
 	{
-		int p = partition(arr, l, r);
+		int p = lpartition(arr, l, r); // lomuto partition
 		if (p == k - 1)
 			return p;
 		else if (p > k - 1)
-			r = mid - 1;
+			r = p - 1;
 		else
-			r = mid + 1;
+			r = p + 1;
 	}
 	return -1;
 }
