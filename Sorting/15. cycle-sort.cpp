@@ -11,7 +11,7 @@ void inputOutput() {
 
 
 // no dups in input arr
-void cycleSort(int arr[], int n)
+void cycleSortDistinct(int arr[], int n)
 {
 	for (int cs = 0; cs < n - 1; cs++)
 	{
@@ -31,6 +31,10 @@ void cycleSort(int arr[], int n)
 		}
 	}
 }
+
+// extend for duplicates
+// modify this cycle sort to calculate no of steps required to sort an array
+
 
 
 
