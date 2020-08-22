@@ -25,6 +25,22 @@ void printPowerSet(string str)
 	}
 }
 
+/*
+	int arr[], int n;
+	for(int i = 0; i < pow(2, n); i++)
+	{
+		vector<int> subset;
+		subset.clear();
+		for(int bit = 0; bit < n; bit++)
+		{
+			if ((i >> bit) & 1) // checking which bit is set
+				subset.push_back(arr[bit]);
+		}
+		for(auto x : subset)
+			print(x);
+	}
+*/
+
 
 int main() {
 	inputOutput();

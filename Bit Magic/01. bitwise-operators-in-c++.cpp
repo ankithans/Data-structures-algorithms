@@ -34,6 +34,11 @@ int main() {
 
 		6. Bitwise NOT ~
 
+
+		odd - 1st bit is 0
+		even 1st bit is 1
+		if(x&1)
+
 */
 
 
