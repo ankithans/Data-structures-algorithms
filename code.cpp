@@ -9,43 +9,51 @@ void inputOutput() {
 #endif
 }
 
+void NoOfTrips(int W[], int n, int k, int count = 0)
+{
+	int sum = 0;
+	int i;
+	if (n < 0)
+		return;
+	for (i = n - 1; i >= 0; i--)
+	{
+		if (sum < k)
+			sum += W[i];
+		else
+			break;
+	}
+	count++;
+	cout << count << endl;
+	NoOfTrips(W, i, k, count);
+}
+
+
 
 int main() {
 	inputOutput();
+
 
 	int t; cin >> t;
 	while (t--)
 	{
 		int n, k;
 		cin >> n >> k;
+		int W[n];
+		for (int i = 0; i < n; i++)
+		{
+			cin >> W[i];
+		}
 
-		// int res = INT_MAX;
-		// for (int i = 0; i < n; i ++)
-		// {
-		// 	int a = (abs(i - 0) - abs(n - i));
-		// 	if (a == 0)
-		// 		res = 0;
-		// 	else
-		// 		res = abs(n - k);
-		// }
-		// if (res != INT_MAX)
-		// 	cout << res << endl;
-
-		int b = k;
-		int c = n + k;
-		int a = (n - k);
-
-		int res = min(b, min(a, c));
-
-
-		cout << abs(res) << endl;
-
-
+		NoOfTrips(W, n, k, 0);
 	}
-
-
 	return 0;
-
 }
+
+/*
+	N box
+	1  2  3  4    N
+	w1 w2 w3
+
+*/
 
 
