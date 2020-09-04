@@ -40,7 +40,7 @@ bool isPow2(int n)
 
 
 // Method 3 : Efficient
-bool isPow2(int n)
+bool check(int n)
 {
 	if (n == 0)
 		return false;

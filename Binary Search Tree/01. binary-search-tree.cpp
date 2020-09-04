@@ -13,6 +13,7 @@ void inputOutput() {
 int main() {
 	inputOutput();
 
+	cout << 34;
 
 
 	return 0;

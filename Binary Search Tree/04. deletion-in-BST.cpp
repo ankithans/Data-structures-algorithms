@@ -43,8 +43,29 @@ Node *delNode(Node *root, int x)
 			delete root;
 			return temp;
 		}
+		else
+		{
+			Node *succ = getSuccessor(root);
+			root -> key = succ -> key;
+			root -> right = delNode(root -> right, succ ->key);
+		}
 	}
+	return root;
 }
+
+// left most leaf in the right side
+Node *getSuccessor(Node *curr)
+{
+	curr = curr -> right;
+	while (curr != NULL && curr -> left != NULL)
+		curr = curr -> left;
+	return curr;
+}
+
+/*
+	time : O(h)
+	space : O(h)
+*/
 
 
 
@@ -108,6 +129,12 @@ int main() {
 		          \
 		           80
 
+
+	1. 0 child - Do search -> directly disconnect
+	2. 1 child - Do search -> Connect the child to parent's parent
+	3. 2 child - Do Search -> find inorder Succersssor
+				 -> swap with inorder pos
+				 -> swaped pos will become case 0 or case 1
 
 
 */
