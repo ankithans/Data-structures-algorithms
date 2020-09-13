@@ -9,21 +9,44 @@ void inputOutput() {
 #endif
 }
 
-int sum(int a[], int n, int s = 0)
+void printEncodings(string ques, string asf)
 {
-	if (n < 0)
-		return s;
-	if (a[n] % 2 == 0)
-		s = s + a[n];
-	return sum(a, n - 1, s);
+	if (ques.length() == 0) {
+		cout << asf << endl;
+		return;
+	} else if (ques.length() == 1) {
+		char ch = ques[0];
+		if (ch == '0')
+			return;
+		else {
+			int chv = ch - '0';
+			char code = (char)('a' + chv - 1);
+			cout << asf + code << endl;
+		} else {
+			char ch = ques[0];
+			string ros = ques.substr(1);
+
+			if (ch == '0')
+				return;
+			else {
+				int chv = ch - '0';
+				char code = (char)('a' + chv - 1);
+				printEncodings(roq, asf + code);
+			}
+
+			string ch12 = ques.substr(0, 2);
+			string roq = ques.substr()
+		}
+
+	}
 }
 
 
 int main() {
 	inputOutput();
 
-	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8 };
-	cout << sum(arr, 7, 0);
+	string str; cin >> str;
+	printEncodings(str, "");
 
 	return 0;
 }

@@ -9,39 +9,29 @@ void inputOutput() {
 #endif
 }
 
-
-int count(int a, int b)
+void Wildcard(string s, int i)
 {
-	int c = a ^ b;
-	int flip = 0;
-	while (c != 0)
+	if (i == s.length())
 	{
-		c = c & (c - 1);
-		flip++;
+		cout << s << endl;
+		return;
 	}
-	return flip;
-}
-
-int count1(int a, int b)
-{
-	int c = 0;
-	while (a != 0 || b != 0)
+	if (s[i] == '?')
 	{
-		int a1 = a & 1, b1 = b & 1;
-		if (a1 != b1)
-			c++;
+		s[i] = '0';
+		Wildcard(s, i + 1);
 
-		a >>= 1;
-		b >>= 1;
-	}
-	return c;
+		s[i] = '1';
+		Wildcard(s, i + 1);
+	} else
+		Wildcard(s, i + 1);
 }
-
 
 int main() {
 	inputOutput();
 
-	cout << count1(10, 20);
+	string str; cin >> str;
+	Wildcard(str, 0);
 
 	return 0;
 }
