@@ -28,7 +28,7 @@ bool isBalanced(string str)
 		else {
 			if (s.empty() == true)
 				return false;
-			else if (matching(str[i], s.top()) == false)
+			else if (matching( s.top(), str[i]) == false)
 				return false;
 			else
 				s.pop();
@@ -53,6 +53,7 @@ int main() {
 	inputOutput();
 
 	cout << isBalanced("([])");
+
 
 	return 0;
 

@@ -29,7 +29,7 @@ void reverse(int arr[], int n)
 int main() {
 	inputOutput();
 
-	cout << "abc";
+	cout << "ankit hasnnsnhnnfn";
 
 	return 0;
 

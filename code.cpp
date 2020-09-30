@@ -9,47 +9,30 @@ void inputOutput() {
 #endif
 }
 
-void printEncodings(string ques, string asf)
-{
-	if (ques.length() == 0) {
-		cout << asf << endl;
-		return;
-	} else if (ques.length() == 1) {
-		char ch = ques[0];
-		if (ch == '0')
-			return;
-		else {
-			int chv = ch - '0';
-			char code = (char)('a' + chv - 1);
-			cout << asf + code << endl;
-		} else {
-			char ch = ques[0];
-			string ros = ques.substr(1);
 
-			if (ch == '0')
-				return;
-			else {
-				int chv = ch - '0';
-				char code = (char)('a' + chv - 1);
-				printEncodings(roq, asf + code);
-			}
-
-			string ch12 = ques.substr(0, 2);
-			string roq = ques.substr()
-		}
-
+int longest(int arr[], int n) {
+	int res = 0;
+	for (int i = 0; i < n; i++)
+	{
+		int c = 0;
+		if (arr[i] == arr[i + 1]) {
+			c++;
+			res = max(res, c);
+		} else
+			c = 0;
 	}
+	return res;
 }
-
 
 int main() {
 	inputOutput();
 
-	string str; cin >> str;
-	printEncodings(str, "");
+	int n;
+	cin >> n;
+	int a[n];
+	for (int i = 0; i < n; i++)
+		cin >> a[i];
 
-	return 0;
+	cout << longest(a, n);
+
 }
-
-
-

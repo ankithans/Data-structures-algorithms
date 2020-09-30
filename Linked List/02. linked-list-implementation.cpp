@@ -57,6 +57,28 @@ Node *insertEnd(Node *head, int key)
 	return head;
 }
 
+
+// insert at given index!
+Node *insertPos(Node *head, int index, int val) {
+	if (index < 0) {
+		cout << "Invalid Position" << endl;
+		return NULL;
+	} else if (index == 0) {
+		Node *temp = new Node(val);
+		temp -> next = head;
+		return temp;
+	} else {
+		Node *curr = head;
+		for (int i = 0; i < index - 1; i++)
+			curr = curr -> next;
+		Node *temp = new Node(val);
+		temp -> next = curr -> next;
+		curr -> next = temp;
+		return head;
+	}
+}
+
+
 int main() {
 	inputOutput();
 
@@ -72,7 +94,6 @@ int main() {
 
 
 	return 0;
-
 }
 
 /*

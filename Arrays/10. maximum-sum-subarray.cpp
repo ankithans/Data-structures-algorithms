@@ -20,12 +20,31 @@ int maxSum(int arr[], int n)
 		int curr = 0;
 		for (int j = i; j < n; j ++)
 		{
-			curr = curr + arr[i];
+			curr = curr + arr[j];
 			res = max(res, curr);
 		}
 	}
 	return res;
 }
+
+
+
+int maxSumSub(int arr[], int n) {
+	int max_so_far = INT_MIN, max_ending_here = 0;
+	for (int i = 0; i < n; i++)
+	{
+		max_ending_here += arr[i];
+		if (max_so_far < max_ending_here) {
+			max_so_far = max_ending_here;
+		}
+
+		if (max_ending_here < 0) {
+			max_ending_here = 0;
+		}
+	}
+	return max_so_far;
+}
+
 
 // Efficient solution
 // Time O(n)
@@ -40,7 +59,7 @@ int maxSum(int arr[], int sum)
 {
 	int res = arr[0];
 	int maxEnding = arr[0];
-	for (int i = 0; i < n; i ++)
+	for (int i = 1; i < n; i ++)
 	{
 		maxEnding = max(maxEnding + arr[i], arr[i]);
 		res = max(res, maxEnding);
